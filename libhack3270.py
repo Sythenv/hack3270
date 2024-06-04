@@ -851,8 +851,10 @@ class hack3270:
         if self.tls_enabled:
             self.logger.debug(self.tls_enabled)
             self.logger.debug("Connecting with TLS")
-            self.server = ssl.wrap_socket(
-                server_sock, ssl_version=ssl.PROTOCOL_SSLv23)
+            self.context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
+            self.server = self.context.wrap_socket(server_sock)
+        else:
+            self.server = server_sock
         else:
             self.server = server_sock
 
