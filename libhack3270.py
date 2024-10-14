@@ -855,8 +855,6 @@ class hack3270:
             self.server = self.context.wrap_socket(server_sock)
         else:
             self.server = server_sock
-        else:
-            self.server = server_sock
 
         self.server.connect((self.server_ip, self.server_port))
         self.logger.debug("Connected to {}:{}".format(
